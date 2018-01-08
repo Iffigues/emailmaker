@@ -1,0 +1,7 @@
+package main
+
+type fname struct{
+}
+
+type lname struct{
+}
