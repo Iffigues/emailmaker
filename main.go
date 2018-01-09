@@ -3,6 +3,7 @@ package main
 import (
 	"os"
 	"fmt"
+	"strings"
 )
 
 var (
@@ -22,29 +23,40 @@ type Argv struct{
 	Err error
 }
 
+func split(a string)(b []string){
+	b = strings.Split(a," ")
+	return
+}
+
+func trim(a string)(b string){
+	b = strings.Trim(a,"-")
+	return
+}
+
+
 func what(a string)(r string){
 	return
 }
 
 func typer(a int,b string,c *Argv){
 	switch a {
+	case 0:
+		c.fname = append(c.fname,b)
 	case 1:
-		fmt.Println("one")
+		c.lname = append(c.lname,b)
 	case 2:
-		fmt.Println("two")
+		c.fname = append(c.domaine,b)
 	case 3:
-		fmt.Println("three")
-	case 4:
-		fmt.Println("")
-	case 5:
-		fmt.Println("")
+		c.country = append(c.country,b)
 	}
 }
 
 func typers(a, b string,c *Argv){
-	switch a {
+	g := trim(a)
+	r := split(b)
+	switch g {
 	case "a":
-		fmt.Println("one")
+		fmt.Println(r)
 	case "b":
 		fmt.Println("two")
 	case "c":
@@ -62,19 +74,21 @@ func make()(t Argv,err error){
 	var tt = 0;
 	for _,ok := range arg {
 		if ok[0] == '-'{
-			act = what(ok)
-		}
-		if act == ""{
-			typer(tt,ok,&t)
-			tt = tt+1
+			act = ok
 		}else{
-			typers(act,ok,&t)
+			if act == ""{
+				typer(tt,ok,&t)
+				tt = tt+1
+			}else{
+				typers(act,ok,&t)
 			act = ""
+			}
 		}
 	}
 	if act != "" {
 		
 	}
+	fmt.Println(t)
 	return
 }
 
