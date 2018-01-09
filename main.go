@@ -4,6 +4,7 @@ import (
 	"os"
 	"fmt"
 	"strings"
+	"errors"
 )
 
 var (
@@ -69,11 +70,18 @@ func typers(a, b string,c *Argv){
 	
 }
 
+func output()(b []string){
+
+}
+
 func make()(t Argv,err error){
 	act := ""
 	var tt = 0;
 	for _,ok := range arg {
 		if ok[0] == '-'{
+			if act != ""{
+				zz := output()
+			}
 			act = ok
 		}else{
 			if act == ""{
@@ -81,12 +89,12 @@ func make()(t Argv,err error){
 				tt = tt+1
 			}else{
 				typers(act,ok,&t)
-			act = ""
+				act = ""
 			}
 		}
 	}
 	if act != "" {
-		
+		err = errors.New("must be no finish by options")
 	}
 	fmt.Println(t)
 	return
@@ -95,7 +103,8 @@ func make()(t Argv,err error){
 func argvs(ar []string){
 	arg = ar
 	count = len(ar)
-	make()
+	_,err := make()
+	fmt.Println(err)
 }
 
 func main(){
