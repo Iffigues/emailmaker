@@ -14,8 +14,14 @@ func nbrl(a string)(b int){
 }
 
 
+func much(b int)(r int){
+	aa := rand.New(src)
+	return aa.Intn(b)
+}
 
 func pred()(r int){
 	aa := rand.New(src)
 	return aa.Intn(2)
 }
+
+

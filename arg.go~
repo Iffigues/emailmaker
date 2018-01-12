@@ -1,0 +1,6 @@
+package main
+
+type skelet struct {
+	skel_fname []file_fname `json:"fname"`
+	skle_lname []file_lname `json:"lname"`
+}

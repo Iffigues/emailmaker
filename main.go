@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"os"
 	"fmt"
 	"strings"
@@ -14,15 +15,6 @@ var (
 	arg []string
 )
 
-type Argv struct{
-	nbr int
-	lname []string
-	fname []string
-	domaine []string
-	country []string
-	mail []email
-	Err error
-}
 
 func split(a string)(b []string){
 	b = strings.Split(a," ")
@@ -71,7 +63,14 @@ func typers(a, b string,c *Argv){
 }
 
 func output()(b []string){
-
+	reader := bufio.NewReader(os.Stdin)
+	var text string
+	for text != "!"{
+		text, _ = reader.ReadString('\n')
+		text = strings.Trim(text,"\n")
+		b = append(b,text)
+	}
+	return
 }
 
 func make()(t Argv,err error){
@@ -81,6 +80,9 @@ func make()(t Argv,err error){
 		if ok[0] == '-'{
 			if act != ""{
 				zz := output()
+				for _,ak := range zz{
+					typers(act,ak,&t)
+				}
 			}
 			act = ok
 		}else{
@@ -108,6 +110,5 @@ func argvs(ar []string){
 }
 
 func main(){
-	argvs(os.Args[1:])
-	fmt.Println(len(arg),pred())
+	fmt.Println(voyelle("boris.dnoyelle"))
 }
