@@ -39,7 +39,7 @@ func typer(a int,b string,c *Argv){
 	case 2:
 		c.lname = append(c.lname,b)
 	case 3:
-		c.fname = append(c.domaine,b)
+		c.domaine = append(c.domaine,b)
 	case 0:
 		c.country = append(c.country,b)
 	}
@@ -107,9 +107,11 @@ func argvs(ar []string){
 	arg = ar
 	count = len(ar)
 	_,err := make()
-	fmt.Println(err)
+	if err != nil{
+		fmt.Println(err)
+	}
 }
 
 func main(){
-	fmt.Println(prand(action_fname))
+	argvs(os.Args[1:])
 }
