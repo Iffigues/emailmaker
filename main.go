@@ -32,14 +32,15 @@ func what(a string)(r string){
 }
 
 func typer(a int,b string,c *Argv){
+	a = a % 4
 	switch a {
-	case 0:
-		c.fname = append(c.fname,b)
 	case 1:
-		c.lname = append(c.lname,b)
+		c.fname = append(c.fname,b)
 	case 2:
-		c.fname = append(c.domaine,b)
+		c.lname = append(c.lname,b)
 	case 3:
+		c.fname = append(c.domaine,b)
+	case 0:
 		c.country = append(c.country,b)
 	}
 }
@@ -75,7 +76,7 @@ func output()(b []string){
 
 func make()(t Argv,err error){
 	act := ""
-	var tt = 0;
+	var tt = 1;
 	for _,ok := range arg {
 		if ok[0] == '-'{
 			if act != ""{
@@ -110,5 +111,5 @@ func argvs(ar []string){
 }
 
 func main(){
-	fmt.Println(voyelle("boris.dnoyelle"))
+	fmt.Println(prand(action_fname))
 }

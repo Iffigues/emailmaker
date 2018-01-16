@@ -8,9 +8,21 @@ import (
 var (
 	voyelles = []string{"a","e","i","o","u","y"}
 	action_fname = []func(string)(string){
+		haha,
 		be_letter,
+		two_letter,
+		third_letter,
+		pi_letter,
+		voyelle,
+		hasard,
 	}
 )
+
+
+func haha(a string)(b string){
+	b = a
+	return
+}
 
 func pi(a int)(vrai bool){
 	b := a/2

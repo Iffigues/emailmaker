@@ -24,4 +24,9 @@ func pred()(r int){
 	return aa.Intn(2)
 }
 
+func prand(a []func(string)(string))(b int){
+	aa := rand.New(src)
+	b = aa.Intn(len(a))
+	return
+}
 
